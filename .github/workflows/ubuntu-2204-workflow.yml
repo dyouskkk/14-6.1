@@ -1,22 +1,25 @@
-name: Ubuntu 22.04 Workflow
+name: Update and Test GLIBC Version on Ubuntu 22.04
 
-on: [push]
+on:
+  workflow_dispatch:  # Manual trigger for this workflow
 
 jobs:
-  build:
-    runs-on: ubuntu-22.04
+  update-glibc:
+    runs-on: ubuntu-22.04  # Use Ubuntu 22.04
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Set up environment
+    - name: Check initial GLIBC version
       run: |
-        echo "Setting up environment..."
-        sudo apt-get update
-        sudo apt-get install -y <your-dependency>
-
-    - name: Run your script
+        echo "[+] Checking initial GLIBC version"
+        ldd --version
+    
+    - name: Update system and upgrade GLIBC
       run: |
-        echo "Running your script..."
-        ./your-script.sh
+        echo "[+] Updating system and upgrading GLIBC"
+        sudo apt update
+        #&& sudo apt upgrade -y
+        
+    - name: Check updated GLIBC version
+      run: |
+        echo "[+] Checking GLIBC version after update"
+        ldd --version
