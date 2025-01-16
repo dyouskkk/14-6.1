@@ -35,7 +35,7 @@ jobs:
         - build-kernel-a14  # Ensure the release only runs after the build jobs complete or are skipped
     if: ${{ github.event.inputs.make_release == 'true' && needs.build-kernel-a14.result == 'success' }}
     env:
-      REPO_OWNER: TheWildJames
+      REPO_OWNER: kkktting
       REPO_NAME: GKI_KernelSU_SUSFS
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       RELEASE_NAME: "*TEST BUILD* GKI Kernels With KernelSU Next & SUSFS v1.5.3 *TEST BUILD*"
