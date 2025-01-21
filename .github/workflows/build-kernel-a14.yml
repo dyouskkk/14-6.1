@@ -198,8 +198,8 @@ jobs:
           
           # Run sed commands for modifications
           sed -i 's/check_defconfig//' ./common/build.config.gki
-          sed -i '$s|echo "\$res"|echo "\$res-DYOU+"|' ./common/scripts/setlocalversion
-          sed -i "/stable_scmversion_cmd/s/-maybe-dirty/-dyou+/g" ./build/kernel/kleaf/impl/stamp.bzl
+          sed -i '$s|echo "\$res"|echo "\$res-nb"|' ./common/scripts/setlocalversion
+          sed -i "/stable_scmversion_cmd/s/-maybe-dirty/-dyou/g" ./build/kernel/kleaf/impl/stamp.bzl
 
           # Run perl command to modify UTS_VERSION
           perl -pi -e 's{UTS_VERSION="\$\(echo \$UTS_VERSION \$CONFIG_FLAGS \$TIMESTAMP \| cut -b -\$UTS_LEN\)"}{UTS_VERSION="#1 SMP PREEMPT Sat Apr 20 04:20:00 UTC 2024"}' ./common/scripts/mkcompile_h
