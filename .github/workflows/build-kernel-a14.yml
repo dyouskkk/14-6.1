@@ -17,7 +17,6 @@ jobs:
             kernel_version: "6.1"
             sub_level: "78"
             os_patch_level: "2024-06"
-          
           #- android_version: "android14"
           #  kernel_version: "6.1"
           #  sub_level: "X"
